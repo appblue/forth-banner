@@ -21,20 +21,19 @@ variable c64set
            [char] # then 
          emit 1 lshift loop drop ;
 
-: c64chr 8 * c64set @ + ( calculate character address )
-         cr 8 0 do dup c@ bitmap cr 1+ loop ;
+: cod2addr   8 * c64set @ + ;
+: c64chr     cod2addr cr 8 0 do dup c@ bitmap cr 1+ loop ;
 
 \ C=64 character set
-create c64
+create c64 c64 c64set !
 c8: 0 1 2 3 4 5 6 7
 c8: $ff 0 $ff 0 $ff 0 $ff 0
 c8: 0 1 2 3 4 5 6 7
 c8: 0 1 2 3 4 5 6 7
 c8: 0 1 2 3 4 5 6 7
 
-c64 c64set !
-
 ( main loop )
 
 cr ." hello world" cr
+1 c64chr
 
