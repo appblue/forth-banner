@@ -202,4 +202,4 @@ c8: $F0 $F0 $F0 $F0 $0F $0F $0F $0F
 
 page
 initbuf
-s" THIS IS TEST          " scroll
+s" BANNER" banner
