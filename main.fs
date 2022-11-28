@@ -1,18 +1,13 @@
 \ C=64 fonts banner in FORTH
 empty
-decimal
 
 ( configuraiton )
 variable c64set
-variable fd-in
-
 variable 'buf
-variable 'text
-variable #text
-variable 'pos
 
-81 value line-size
-8  value #lines
+#81 value line-size
+0   value #bit
+#8  value #lines
 
 ( definitions )
 
@@ -47,8 +42,6 @@ variable 'pos
 : printbuf   'buf @ #lines line-size * type ;
 : scrollbuf  #lines 0 do i lineaddr dup 1+ swap line-size 2 - cmove loop ;
 
-0 value #bit
-
 : updbuf     #lines 0 do  
                dup ascii2addr i + c@ 7 #bit - bit2chr
                i lineaddr$ c! 
@@ -64,8 +57,8 @@ variable 'pos
 : _scroll    8 * 0 do printbuf scrollbuf i 8 mod to #bit dup i 8 / + c@ updbuf 100 ms 8up loop ;
 : scroll     cr _scroll drop 8down ;
 
-: banbuf     pad 10 0 do bl over i + c! loop swap 10 min cmove pad ; 
-: banner     cr banbuf 10 8 * 0 do scrollbuf i 8 mod to #bit dup i 8 / + c@ updbuf loop drop printbuf ;
+: banbuf     pad #10 0 do bl over i + c! loop swap #10 min cmove pad ; 
+: banner     cr banbuf #10 8 * 0 do scrollbuf i 8 mod to #bit dup i 8 / + c@ updbuf loop drop printbuf ;
 
 \ C=64 character set
 create c64 c64 c64set !
