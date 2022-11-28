@@ -20,13 +20,16 @@ s" BANNER" banner
 As a bonus, there is also a scroll in terminal included in the code, that you can run with the following command:
 
 ```
-s" FORTH IS OK       " scroll 
-##  ##  ##           ####    ####            ####   ##  ##                      
-    ##  ##            ##    ##  ##          ##  ##  ## ##                       
-    ##  ##            ##    ##              ##  ##  ####                        
-    ######            ##     ####           ##  ##  ###                         
-    ##  ##            ##        ##          ##  ##  ####                        
-    ##  ##            ##    ##  ##          ##  ##  ## ##                       
-    ##  ##           ####    ####            ####   ##  ##                      
-                                                                                
+initbuf   ok
+40 to scroll-speed   ok
+s" GFORTH RULEZ!!           " scroll
+##  ##  ##      ######  ######    ##      ##
+##  ##  ##      ##          ##    ##      ##
+##  ##  ##      ##         ##     ##      ##
+##  ##  ##      ####      ##      ##      ##
+##  ##  ##      ##       ##
+##  ##  ##      ##      ##
+ ####   ######  ######  ######    ##      ##
+
+ ok
 ```
