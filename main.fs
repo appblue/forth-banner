@@ -22,7 +22,13 @@ variable c64set
          emit 1 lshift loop drop ;
 
 : cod2addr   8 * c64set @ + ;
-: c64chr     cod2addr cr 8 0 do dup c@ bitmap cr 1+ loop ;
+: c64chr     cod2addr 8 0 do dup c@ bitmap cr 1+ loop ;
+
+( terminal control )
+: clrscr ESC[ .\" 2J" ;
+: home   ESC[ .\" H" ;
+: 9up    ESC[ .\" 9A" ;
+: 1up    ESC[ .\" 1A" ;
 
 \ C=64 character set
 create c64 c64 c64set !
@@ -32,8 +38,10 @@ c8: 0 1 2 3 4 5 6 7
 c8: 0 1 2 3 4 5 6 7
 c8: 0 1 2 3 4 5 6 7
 
+: anim   0 do i c64chr s" frame: " type i . cr 45 ms 1up 9up loop ;
+
 ( main loop )
 
-cr ." hello world" cr
-1 c64chr
+page
+100 anim
 
