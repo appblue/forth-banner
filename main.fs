@@ -8,7 +8,7 @@ variable 'buf
 #81 value line-size
 #8  value #lines
 0   value #bit
-#60 value scroll-speed
+#40 value scroll-speed
 
 ( definitions )
 
@@ -58,10 +58,10 @@ variable 'buf
 : _scroll    8 * 0 do 
                printbuf scrollbuf 
                i 8 mod to #bit 
-               dup i 8 / + c@ 
+               dup i letter@
                updbuf 
                scroll-speed ms 8up
-               key? if key unloop exit then 
+               key? if key unloop drop exit then 
              loop ;
 : scroll     cr _scroll drop 8down ;
 
