@@ -6,8 +6,9 @@ variable c64set
 variable 'buf
 
 #81 value line-size
-0   value #bit
 #8  value #lines
+0   value #bit
+#60 value scroll-speed
 
 ( definitions )
 
@@ -54,7 +55,14 @@ variable 'buf
 : 8down      ESC[ .\" 8B" ;
 
 : letter@    8 / + c@ ;
-: _scroll    8 * 0 do printbuf scrollbuf i 8 mod to #bit dup i 8 / + c@ updbuf 100 ms 8up loop ;
+: _scroll    8 * 0 do 
+               printbuf scrollbuf 
+               i 8 mod to #bit 
+               dup i 8 / + c@ 
+               updbuf 
+               scroll-speed ms 8up
+               key? if key unloop exit then 
+             loop ;
 : scroll     cr _scroll drop 8down ;
 
 : banbuf     pad #10 0 do bl over i + c! loop swap #10 min cmove pad ; 
