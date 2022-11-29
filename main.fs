@@ -201,6 +201,5 @@ c8: $F0 $F0 $F0 $F0 $0F $0F $0F $0F
 
 ( main loop )
 
-page
 initbuf
-s" BANNER" banner
+s" AMIGA RULEZ          " scroll
