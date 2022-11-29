@@ -65,7 +65,7 @@ variable 'buf
              loop ;
 : scroll     cr _scroll drop 8down ;
 
-: banbuf     pad #10 0 do bl over i + c! loop swap #10 min cmove pad ; 
+: banbuf     pad #10 blank pad swap #10 min cmove pad ;
 : banner     cr banbuf #10 8 * 0 do scrollbuf i 8 mod to #bit dup i 8 / + c@ updbuf loop drop printbuf ;
 
 \ C=64 character set
