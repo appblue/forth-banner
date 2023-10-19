@@ -13,7 +13,7 @@ variable 'buf
 ( definitions )
 
 \ convert u-string to counted string
-\ ( c-str u -- c-str satus )
+\ ( c-str u -- c-str status )
 : >cstr      pad rot rot pad 2dup c! 1+ swap move ;
 : >num       >cstr number ;
 
@@ -29,7 +29,7 @@ variable 'buf
 \ from the C64 characterset
 : ascii2pet  dup #65 >= over #90 <= and if #64 - exit then  
              dup #32 >= over #58 <= and if exit then 
-             drop #32 ;
+             drop ( default ) #32 ;
 : ascii2addr ascii2pet 8 * c64set @ + ;
 : c64chr     ascii2addr 8 0 do dup c@ bitmap cr 1+ loop drop ;
 
